@@ -2256,6 +2256,7 @@ echo -ne "\r$shelp\n"
 exit 0
 }
 show_ad(){
+return 0  # <--- 添加这一行，强制跳过广告显示逻辑
 RANDOM=$(date +%s)
 local -a ads=()
 local i=1
@@ -2277,7 +2278,7 @@ indices[i]=${indices[j]}
 indices[j]=$tmp
 done
 local -a aad
-aad[0]=$(curl -sL --max-time 5 "${rawgithub}main/ref/sponsor.ans")
+# aad[0]=$(curl -sL --max-time 5 "${rawgithub}main/ref/sponsor.ans")
 for ((i=0; i<adCount; i++));do
 aad[${indices[i]}]="${ads[i]}"
 done
